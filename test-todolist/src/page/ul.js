@@ -8,16 +8,14 @@ class Ul extends PureComponent{
     render(){
         let {data} = this.props
         
-        return(<div>
-            <div>已完成</div>
-            
-                <Li finished={data}/>
-            
-            {/* <div>未完成</div>
+        return(
             <ul>
-                <Li notFinish={data}/>
-            </ul> */}
-        </div>)
+                {data.map(item => {
+                    return <Li list={item} key={item.id} {...this.props}/>
+                    // {...this.props} 将props传递下去
+                })}
+            </ul>
+        )
     }
 }
 

@@ -5,9 +5,46 @@
     padding: 20px;
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2) ;
 }
-input{
+.creatInput{
     width: 300px;
     height: 25px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+/* input{
+    width: 300px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+} */
+li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+.deleteIcon{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #cdcdcd;
+}
+
+.status{
+    color: #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+.todo{
+    display: flex;
+
+}
+.edit-none{
+    display: none;
+}
+.editing .todo-none{
+    display: none;
+}
+.editing .edit-none{
+    display: block;
 }

@@ -1,7 +1,9 @@
 import React, { PureComponent } from "react";
 import './index.css'
 import Title from './title'
+import Input from "./input";
 import Ul from './ul'
+import Status from "./status";
 
 /**
  * 列表数据格式
@@ -20,30 +22,46 @@ class Todo extends PureComponent{
     constructor(props) {
         super(props);
         this.state = {
-            value:"默认值",
-            data:[]
-        };
-        this.input = React.createRef();
-    }
-    onSubmit(e) {
-        let {data} = this.state
-        let evt = window.event || e;
-        if (evt.keyCode === 13) {
-            console.log('按下了回车键',this.input.current.value)
-            if(this.input.current.value){
-                data.push({id:data.length,selected:false,value:this.input.current.value })
-                this.input.current.value = ""
-            }
-            console.log(data,"data")
+            data:[{id: 0, selected: false, value: "的说法"}]
         }
+        
+    }
+    // input 按回车键添加数据
+    onSubmit(value) {
+        let {data} = this.state
+        data.unshift({
+            id:data.length,
+            selected:false,
+            value:value 
+        })
+        this.setState({
+            data:data,
+        })
+        console.log("33",data)
+    }
+    editItem(id,value){
+
     }
     render(){
         let {data} = this.state
         
         return(<div className="todoList">
             <Title />
-            <input type="text" onKeyDown={(e)=> this.onSubmit(e)} ref={this.input}/>
-            <Ul data={data}/>
+            <Input onSubmit={(value) => this.onSubmit(value)}/>
+            {
+                data.length <1 ? "" : [
+                    <Ul
+                        key={1}
+                        data={data}
+                        editItem={this.editItem}
+                    />,
+                    <Status
+                        key={2}
+                        data={data} 
+                    />
+                ]
+            }
+            
         </div>)
     }
 }
