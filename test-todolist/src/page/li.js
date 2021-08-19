@@ -19,13 +19,19 @@ export default class Li  extends PureComponent{
         return true;
     }
     render(){
-        let {list,editItem} = this.props
+        let {list,editItem, changeselected} = this.props
         let { value,id,selected } = list
         let { edit,text } = this.state
         return(<li className={edit?"editing":""}>
             <div className="todo-none">
                 <div>
-                    <input type="checkbox" />
+                    <input type="checkbox" 
+                        checked={selected}
+                        onChange={(e)=>  {
+                            console.log('2222',e.target.checked)
+                            // changeselected(id, e.target.checked)
+                        }}
+                    />
                     <span onDoubleClick={()  => {
                         this.setState({
                             edit:true

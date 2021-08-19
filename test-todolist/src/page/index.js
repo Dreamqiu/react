@@ -42,6 +42,9 @@ class Todo extends PureComponent{
     editItem(id,value){
 
     }
+    changeselected(id,selected){
+        console.log(id,selected)
+    }
     render(){
         let {data} = this.state
         
@@ -53,7 +56,8 @@ class Todo extends PureComponent{
                     <Ul
                         key={1}
                         data={data}
-                        editItem={this.editItem}
+                        editItem={this.editItem.bind(this)}
+                        changeselected={this.changeselected.bind(this)}
                     />,
                     <Status
                         key={2}
