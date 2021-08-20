@@ -19,26 +19,32 @@ export default class Li  extends PureComponent{
         return true;
     }
     render(){
-        let {list,editItem, changeselected} = this.props
+        let {list,editItem, changeselected, deleteItem} = this.props
         let { value,id,selected } = list
         let { edit,text } = this.state
         return(<li className={edit?"editing":""}>
-            <div className="todo-none">
+            <div className={"todo todo-none"}>
                 <div>
                     <input type="checkbox" 
                         checked={selected}
                         onChange={(e)=>  {
-                            console.log('2222',e.target.checked)
-                            // changeselected(id, e.target.checked)
+                            changeselected(id, e.target.checked)
                         }}
                     />
-                    <span onDoubleClick={()  => {
-                        this.setState({
-                            edit:true
-                        })
+                    <span className={selected ? "selected" : ""} onDoubleClick={()  => {
+                        if(selected === false){
+                            this.setState({
+                                edit:true
+                            })
+                        }
+                        
                     }}>{value}</span>
                 </div>
-                <div className="deleteIcon">x</div>
+                <div className={ selected ? "deleteIcon" : "no-show-delete"}
+                    onClick={()=> {
+                        deleteItem(id)
+                    }}
+                >x</div>
             </div>
             <div className="edit-none">
                 <input 
@@ -51,10 +57,9 @@ export default class Li  extends PureComponent{
                         })
                     }}
                     onBlur={() => {
-                        // this.setState({
-                        //     edit: false
-                        // })
-                        this.state.edit = false;
+                        this.setState({
+                            edit: false
+                        })
                         editItem( id, text)
                     }}
                 />

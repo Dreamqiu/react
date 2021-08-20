@@ -29,6 +29,12 @@ li{
     border-radius: 50%;
     background-color: #cdcdcd;
 }
+.deleteIcon:hover{
+    cursor: pointer;
+}
+.no-show-delete{
+    display: none;
+}
 
 .status{
     color: #ccc;
@@ -37,6 +43,8 @@ li{
 }
 .todo{
     display: flex;
+    justify-content: space-between;
+    width: 100%;
 
 }
 .edit-none{
@@ -47,4 +55,13 @@ li{
 }
 .editing .edit-none{
     display: block;
+}
+.selected{
+    text-decoration: line-through;
+}
+.clear-all{
+    text-decoration: underline
+}
+.clear-all:hover{
+    cursor: pointer;
 }

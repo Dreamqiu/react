@@ -21,6 +21,9 @@ class Input extends PureComponent{
                             alert('请输入内容')
                             return
                         }
+                        this.setState({
+                            value: ""
+                        })
                         onSubmit(value)
                     }
                 }} onChange={(e) => {
