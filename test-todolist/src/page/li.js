@@ -11,6 +11,7 @@ export default class Li  extends PureComponent{
     static getDerivedStateFromProps(props, state){
         //console.log(props,state); 
         /*
+            getDerivedStateFromProps让组件在props更新时，同步更新state
             1. 挂载时：同步 state 中的val 和 props.txt
         */
         if(!state.edit){

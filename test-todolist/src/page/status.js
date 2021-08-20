@@ -1,5 +1,4 @@
 import { PureComponent } from 'react'
-
 class Status extends PureComponent{
     done = () => {
         let { data } = this.props
